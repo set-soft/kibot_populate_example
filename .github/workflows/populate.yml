@@ -39,7 +39,7 @@ jobs:
   # This step is to upload the results to another repo (web pages)
   deploy:
     runs-on: ubuntu-latest
-    needs: quick
+    needs: populate
 
     steps:
     - uses: actions/checkout@v3
