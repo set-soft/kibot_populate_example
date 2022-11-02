@@ -18,7 +18,7 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  quick:
+  populate:
     runs-on: ubuntu-latest
     container: ghcr.io/inti-cmnb/kicad6_auto:dev
 
@@ -54,3 +54,4 @@ jobs:
       uses: JamesIves/github-pages-deploy-action@v4.3.3
       with:
         folder: Generated
+        branch: main
