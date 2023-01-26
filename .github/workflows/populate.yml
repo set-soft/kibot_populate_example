@@ -20,18 +20,26 @@ on:
 jobs:
   populate:
     runs-on: ubuntu-latest
-    container: ghcr.io/inti-cmnb/kicad6_auto:dev
+    container: ghcr.io/inti-cmnb/kicad6_auto_full:dev
 
     steps:
     - name: Checkout
       uses: actions/checkout@v3
 
-    - name: Populate
+    - name: Populate 2D
       run: |
-        kibot -c configs/populate_with_filter.kibot.yaml -b PCBs/Ardu/ArduinoLearningKitStarter.kicad_pcb -d Generated
+        kibot -c configs/populate_with_filter.kibot.yaml -b PCBs/Ardu/ArduinoLearningKitStarter.kicad_pcb -d Generated Populate2D
+
+    - name: Populate 3D
+      run: |
+        kibot -c configs/populate_with_filter.kibot.yaml -b PCBs/Ardu/ArduinoLearningKitStarter.kicad_pcb -d Generated Populate3D
+
+    - name: Populate HQ
+      run: |
+        kibot -c configs/populate_with_filter.kibot.yaml -b PCBs/Ardu/ArduinoLearningKitStarter.kicad_pcb -d Generated PopulateHQ
 
     - name: Retrieve results
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: Generated_example
         path: Generated
@@ -45,13 +53,13 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: Retrieve results
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
       with:
         name: Generated_example
         path: Generated
 
     - name: Deploy navigate results
-      uses: JamesIves/github-pages-deploy-action@v4.3.3
+      uses: JamesIves/github-pages-deploy-action@v4
       with:
         folder: Generated
         branch: main

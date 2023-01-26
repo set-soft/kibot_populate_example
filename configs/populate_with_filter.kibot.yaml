@@ -61,12 +61,33 @@ outputs:
       # transparent_background_color: "#00FF00"
       # transparent_background_fuzz: 15
 
+  - name: Blender
+    comment: "How to draw a step"
+    type: blender_export
+    run_by_default: false
+    options:
+      outputs:
+        - type: render
+      render_options:
+        transparent_background: true
+        auto_crop: true
+        # background1: "#DAF1FF"
+        # background2: "#DAF1FF"
+
   - name: Populate3D
     comment: "Populate example using KiCad render"
     type: populate
     dir: Render_3D
     options:
       renderer: KiCad_3D
+      input: configs/with_filter_html.md
+
+  - name: PopulateHQ
+    comment: "Populate example using Blender"
+    type: populate
+    dir: Blender
+    options:
+      renderer: Blender
       input: configs/with_filter_html.md
 
   - name: Populate2D
