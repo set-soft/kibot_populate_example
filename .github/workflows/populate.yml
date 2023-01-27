@@ -28,15 +28,15 @@ jobs:
 
     - name: Populate 2D
       run: |
-        kibot -c configs/populate_with_filter.kibot.yaml -b PCBs/Ardu/ArduinoLearningKitStarter.kicad_pcb -d Generated Populate2D
+        kibot -vvvv -c configs/populate_with_filter.kibot.yaml -b PCBs/Ardu/ArduinoLearningKitStarter.kicad_pcb -d Generated Populate2D 2> Generated/Populate2D.log
 
     - name: Populate 3D
       run: |
-        kibot -c configs/populate_with_filter.kibot.yaml -b PCBs/Ardu/ArduinoLearningKitStarter.kicad_pcb -d Generated Populate3D
+        kibot -vvvv -c configs/populate_with_filter.kibot.yaml -b PCBs/Ardu/ArduinoLearningKitStarter.kicad_pcb -d Generated Populate3D 2> Generated/Populate3D.log
 
     - name: Populate HQ
       run: |
-        kibot -c configs/populate_with_filter.kibot.yaml -b PCBs/Ardu/ArduinoLearningKitStarter.kicad_pcb -d Generated PopulateHQ
+        kibot -vvvv -c configs/populate_with_filter.kibot.yaml -b PCBs/Ardu/ArduinoLearningKitStarter.kicad_pcb -d Generated PopulateHQ 2> Generated/PopulateHQ.log
 
     - name: Retrieve results
       uses: actions/upload-artifact@v3
