@@ -8,11 +8,13 @@ on:
       - '*.kicad_sch'
       - '*.kicad_pcb'
       - '.github/workflows/populate.yml'
+      - 'configs/*'
   pull_request:
     paths:
       - '*.kicad_sch'
       - '*.kicad_pcb'
       - '.github/workflows/populate.yml'
+      - 'configs/*'
   repository_dispatch:
     types: [run_pop]
 
