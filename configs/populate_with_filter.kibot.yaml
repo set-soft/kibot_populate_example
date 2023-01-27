@@ -68,6 +68,8 @@ outputs:
     options:
       outputs:
         - type: render
+      camera:
+        type: orthographic
       render_options:
         transparent_background: true
         auto_crop: true
